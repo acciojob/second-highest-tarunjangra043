@@ -1,40 +1,35 @@
 <!DOCTYPE html>
-
 <html>
-
 <head>
-	<link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles.css">
 </head>
+<body>  
+    <script>
+        function secondHighest(arr) {
+            if (arr.length <= 1) {
+                return -Infinity;
+            }
+            
+            let uniqueArr = [...new Set(arr)];
 
-<body>	
-	<script>
-		function secondHighest(arr) {
-			//Write your code here
-			if(arr.length <= 1){
-				return undefined;
-			}
+            if (uniqueArr.length === 1) {
+                return -Infinity;
+            }
 
-		const allEqual = (a) => a.every(val => val === a[0]);
-			if(allEqual(arr)){
-				return arr[0];
-			}
-			
-		}
+            uniqueArr.sort((a, b) => b - a);
 
-		function Main() {
-			var n = prompt("Enter the number of elements");
-			var arr = [];
-			for (var i = 0; i < n; i++) {
-				arr[i] = prompt("Enter element " + (i+1))
-			}
-			alert(secondHighest(arr));
-		}
-		Main();
-	</script>
+            return uniqueArr[1];
+        }
 
-    <script type="text/javascript" src="./script.js">
-</script>
-
+        function Main() {
+            var n = prompt("Enter the number of elements");
+            var arr = [];
+            for (var i = 0; i < n; i++) {
+                arr[i] = parseInt(prompt("Enter element " + (i+1)), 10);
+            }
+            alert(secondHighest(arr));
+        }
+        Main();
+    </script>
 </body>
-
 </html>
